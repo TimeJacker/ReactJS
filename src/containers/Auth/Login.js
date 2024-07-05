@@ -47,8 +47,8 @@ class Login extends Component {
                     errMessage: data.message
                 })
             } if (data && data.errCode == 0) {
-                userLoginSuccess(data.user)
-                console.log('login succeeds')
+                this.props.userLoginSuccess(data.user)
+
             }
         } catch (error) {
             if (error.response) {
@@ -59,7 +59,7 @@ class Login extends Component {
                 }
             }
 
-            console.log('hoidanit', error.response)
+
 
         }
     }
@@ -126,7 +126,7 @@ const mapDispatchToProps = dispatch => {
     return {
         navigate: (path) => dispatch(push(path)),
         // userLoginFail: () => dispatch(actions.userLoginFail()),
-        userLoginSuccess: (userInfo) => dispatch(actions.userLoginSuccess(userInfo))
+        userLoginSuccess: (userInfo) => dispatch(actions.userLoginSuccess(userInfo)),
     };
 };
 
